@@ -1,39 +1,22 @@
-﻿using Classes;
+﻿using EX02;
 
-var conta = new ContaBancaria("Renato Fernandez", 1000.50m);
-Console.Write($"A conta {conta.Numero} foi criada por {conta.Cliente} com saldo inicial de {conta.Saldo}\n\n");
+var Nafta = new Nafta ("Cliente01", 0);
+Nafta.EfetuarDeposito(30, DateTime.Now, "Nafta");
+Nafta.ExecutarTransacoesdeFimdeMes();
+Console.WriteLine(Nafta.ObterHistoricodeConta());
 
-conta.EfetuarSaque(500, DateTime.Now, "Pagamento de aluguel");
-Console.WriteLine($"Saldo Atual de {conta.Saldo}\n");
-conta.EfetuarDeposito(100, DateTime.Now, "Recebimento de um amigo");
-Console.WriteLine($"Saldo Atual de {conta.Saldo}\n");
+var GNV = new GNV ("Cliente02", 0);
+GNV.EfetuarDeposito(40, DateTime.Now, "GNV");
+GNV.ExecutarTransacoesdeFimdeMes();
+Console.WriteLine(GNV.ObterHistoricodeConta());
 
-/*
-// Testar saldo negativo.
-try
-{
-    conta.EfetuarSaque(750, DateTime.Now, "Tentativa de saque sem saldo suficiente");
-}
-catch (InvalidOperationException e)
-{
-    Console.WriteLine("Exceção causada por tentativa de saque sem saldo suficiente");
-    Console.WriteLine(e.ToString());
-}
+var DieselS10 = new DieselS10 ("Cliente03", 0);
+DieselS10.EfetuarDeposito(30, DateTime.Now, "DieselS10");
+DieselS10.ExecutarTransacoesdeFimdeMes();
+Console.WriteLine(DieselS10.ObterHistoricodeConta());
 
+var DieselS8 = new DieselS8 ("Cliente04", 0);
+DieselS8.EfetuarDeposito(50, DateTime.Now, "DieselS8");
+DieselS8.ExecutarTransacoesdeFimdeMes();
+Console.WriteLine(DieselS8.ObterHistoricodeConta());
 
-ContaBancaria contaInvalida;
-
-// Testar o saldo inicial - deve ser positivo.
-try
-{
-    contaInvalida = new ContaBancaria("Inválida", -55);
-}
-catch (ArgumentOutOfRangeException e)
-{
-    Console.WriteLine("Exceção causada ao criar conta com saldo negativo");
-    Console.WriteLine(e.ToString());
-    return;
-}
-*/
-
-Console.WriteLine(conta.ObterHistoricodeConta());
